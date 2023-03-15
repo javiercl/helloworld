@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="Teams management" id="helloworld_menu" sequence="20" />
+			<menuitem name="Configuración" id="helloworld_configuracion_menu" sequence="10" parent="helloworld_menu" />
+				<menuitem name="Ligas" action="helloworld_ligas_action"  id="helloworld_ligas_menu" sequence="10" parent="helloworld_configuracion_menu" />
+				<menuitem name="Estadios" action="helloworld_estadios_action"  id="helloworld_estadios_menu" sequence="20" parent="helloworld_configuracion_menu" />
+				<menuitem name="Arbitros" action="helloworld_arbitros_action"  id="helloworld_arbitros_menu" sequence="30" parent="helloworld_configuracion_menu" />
+				<menuitem name="Equipos" action="helloworld_teams_action"  id="helloworld_teams_menu" sequence="40" parent="helloworld_configuracion_menu" />
+			<menuitem name="Procesos" id="helloworld_procesos_menu" sequence="10" parent="helloworld_menu" />
+				<menuitem name="Jugadores" action="helloworld_players_action"  id="helloworld_players_menu" sequence="50" parent="helloworld_procesos_menu" />
+				<menuitem name="Plays" action="helloworld_plays_action"  id="helloworld_plays_menu" sequence="10" parent="helloworld_procesos_menu" />
+
+	</data>
+</odoo>

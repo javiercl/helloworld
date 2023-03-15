@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- vista tipo tree del modelo helloworld.estadios -->	
+		<record model="ir.ui.view" id="helloworld_estadios_tree">
+			<field name="name">helloworld.estadios.tree</field>
+			<field name="model">helloworld.estadios</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Estadios" editable="bottom">
+					<field name="photo"  widget="image" options="{'size': [50, 50]}"/>
+					<field name="name" />
+					<field name="liga_id" />
+				</tree>
+			</field>
+		</record>
+
+
+		<!-- ACCION PARA EL MODELO helloworld.estadios -->	
+		<record id="helloworld_estadios_action" model="ir.actions.act_window">
+			<field name="name">Estadios</field>
+			<field name="res_model">helloworld.estadios</field>
+			<field name="view_mode">tree</field>
+		</record>
+
+</odoo>

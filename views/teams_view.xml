@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- vista tipo form del modelo helloworld.teams -->	
+		<record model="ir.ui.view" id="teams_form">
+            <field name="name">helloworld.teams.form</field>
+            <field name="model">helloworld.teams</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Datos de teams">
+                        <field name="name" placeholder="Nombre del equipo" />
+                        <field name="coach_id" placeholder="Coach"/>
+                        <field name="photo" placeholder="Foto" widget="image" options="{'size': [150, 150]}"/>
+                    </group>
+					<field name="player_ids" nolabel="1" readonly="True">
+						<tree>
+							<field name="photo" widget="image"/>
+							<field name="name"/>
+							<field name="numero"/>
+							<field name="posicion"/>
+						</tree>
+					</field>
+                </sheet>
+            </form>
+            </field>
+		</record>
+
+        <!-- vista tipo tree del modelo helloworld.teams -->	
+		<record model="ir.ui.view" id="helloworld_teams_tree">
+			<field name="name">helloworld.teams.tree</field>
+			<field name="model">helloworld.teams</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="teams" >
+                        <field name="liga_id"/>
+                        <field name="name" />
+                        <field name="coach_id"/>
+                        <field name="photo" widget="image" options="{'size': [50, 50]}"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="helloworld_teams_search">
+			<field name="name">helloworld.alumno.search</field>
+			<field name="model">helloworld.teams</field>
+			<field name="arch" type="xml">
+				<search>
+                        <field name="name" />
+                        <field name="coach_id"/>
+				</search>
+			</field>
+		</record>
+
+
+
+		<!-- ACCION PARA EL MODELO helloworld.teams -->	
+		<record id="helloworld_teams_action" model="ir.actions.act_window">
+			<field name="name">Teams</field>
+			<field name="res_model">helloworld.teams</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+</odoo>

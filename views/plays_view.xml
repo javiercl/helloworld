@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- vista tipo form del modelo helloworld.plays -->	
+		<record model="ir.ui.view" id="plays_form">
+            <field name="name">helloworld.plays.form</field>
+            <field name="model">helloworld.plays</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group string="Datos de plays">
+                        <field name="name" placeholder="Folio" />
+                        <field name="fecha" placeholder="Fecha de juego"/>
+                        <field name="liga_id" placeholder="Liga"/>
+                        <field name="team1_id" placeholder="Liga"/>
+                        <field name="team2_id" placeholder="Liga"/>
+                        <field name="estadio_id" placeholder="Liga"/>
+                    </group>
+					<field name="arbitro_ids" nolabel="1">
+						<tree editable="bottom">
+							<field name="arbitro_id"/>
+							<field name="posicion"/>
+						</tree>
+					</field>
+                </sheet>
+            </form>
+            </field>
+		</record>
+
+        <!-- vista tipo tree del modelo helloworld.plays -->	
+		<record model="ir.ui.view" id="helloworld_plays_tree">
+			<field name="name">helloworld.plays.tree</field>
+			<field name="model">helloworld.plays</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="plays" >
+                        <field name="name" />
+                        <field name="fecha" />
+                        <field name="liga_id" />
+                        <field name="team1_id"/>
+                        <field name="team2_id"/>
+                        <field name="estadio_id"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="helloworld_plays_search">
+			<field name="name">helloworld.alumno.search</field>
+			<field name="model">helloworld.plays</field>
+			<field name="arch" type="xml">
+				<search>
+                        <field name="name" />
+                        <field name="fecha" />
+                        <field name="liga_id" />
+                        <field name="team1_id"/>
+                        <field name="team2_id"/>
+                        <field name="estadio_id"/>
+				</search>
+			</field>
+		</record>
+
+
+
+		<!-- ACCION PARA EL MODELO helloworld.plays -->	
+		<record id="helloworld_plays_action" model="ir.actions.act_window">
+			<field name="name">Plays</field>
+			<field name="res_model">helloworld.plays</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+</odoo>
