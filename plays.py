@@ -6,10 +6,6 @@ from odoo.exceptions import UserError
 class plays(models.Model):
     _name = 'helloworld.plays'
 
-    #def cal_folio(self):
-    #    self.name =  self.env['ir.sequence'].next_by_code('helloworld.plays.folio')
-
-    #name = fields.Char(string='Folio', readonly=True, default='cal_folio')
     name = fields.Char(string='Folio', readonly=True)
     fecha = fields.Datetime(string='Fecha', required=True)
     liga_id = fields.Many2one('helloworld.ligas',string='Liga', required=True)
@@ -32,6 +28,26 @@ class plays(models.Model):
         if vals['team1_id'] == vals['team2_id']:
             raise UserError('El local y visitante deben ser diferentes')   
 
+        fecha = vals['fecha']
+        h = int(fecha[11:13])*3600
+        m = int(fecha[14:16])*60
+        s = int(fecha[17:])
+        ss1 = h + m + s
+        ss2 = h + m + s + 7200
+
+        plays_prog = self.env['helloworld.plays'].search([('state','=','cre')])
+        for play in plays_prog:
+            if vals['estadio'] == play.estadio.id:
+                if fecha[:10] == play.fecha.strftime("%Y-%m-%d %H:%M:%S")[:10]:
+                    fecha = play.fecha.strftime("%Y-%m-%d %H:%M:%S")
+                    h = int(fecha[11:13])*3600
+                    m = int(fecha[14:16])*60
+                    s = int(fecha[17:])
+                    ww1 = h + m + s
+                    ww2 = h + m + s + 7200
+                    if (ss1 >= ww1 and ss1 <= ww2) or (ss2 >= ww1 and ss2 <= ww2):
+                        raise UserError('Fecha/hora empalmada')
+            
         return super(plays,self).create(vals)
 
     def write(self,vals):
