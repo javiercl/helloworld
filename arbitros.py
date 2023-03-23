@@ -10,3 +10,5 @@ class arbitros(models.Model):
     photo = fields.Binary(string='Foto')
     
     _order = 'liga_id,name'
+
+
