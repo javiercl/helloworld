@@ -6,5 +6,7 @@ from . import ligas
 from . import estadios
 from . import arbitros
 from . import plays
+from . import cedulas
+
 
 
