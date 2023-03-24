@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
-from odoo import models,fields
-
+from odoo import models,fields,api
+from odoo.exceptions import UserError
 
 class cedulas(models.Model):
     _name = 'helloworld.cedulas'
 
-    play_id = fields.Many2one('helloworld.plays',string='Juego')
-    resultado = fields.Char(string='Resultado') # 1-1, 0-0, 3-2, etc
-    fecha_inicio = fields.Datetime(string='Fecha de inicio')
-    fecha_fin = fields.Datetime(string='Fecha de finalización')
-    player_ids = fields.Many2one('helloworld.cedula_det',string='Players')
-    eventos_ids = fields.Many2one('helloworld.eventos',string='Eventos')
+    name = fields.Char(string='Folio', readonly=True)
+    play_id = fields.Many2one('helloworld.plays',string='Juego', required="True")
+    resultado = fields.Char(string='Resultado', required="True") # 1-1, 0-0, 3-2, etc
+    fecha_inicio = fields.Datetime(string='Fecha de inicio', required="True")
+    fecha_fin = fields.Datetime(string='Fecha de finalización', required="True")
+    player_ids = fields.One2many('helloworld.cedula_det','cedula_id',string='Players', required="True")
+    state = fields.Selection([('cre','Creado'),('env','Enviada'),('can','Cancelado')],string='Estado',readonly=True, default='cre', required="True")
 
     _order = 'play_id'
+
+    def registrar(self):
+        raise UserError('Cambiar status')
 
 
 class cedula_det(models.Model):
     _name = 'helloworld.cedula_det'
     cedula_id = fields.Many2one('helloworld.cedulas',string='Cedula')
     player_id = fields.Many2one('helloworld.players',string='Jugador')
-
+    eventos_ids = fields.One2many('helloworld.eventos','player_id',string='Eventos')
 
 
 class eventos(models.Model):

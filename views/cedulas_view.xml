@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- vista tipo form del modelo helloworld.cedulas -->	
+		<record model="ir.ui.view" id="cedulas_form">
+            <field name="name">helloworld.cedulas.form</field>
+            <field name="model">helloworld.cedulas</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="registrar" string="Registrar" type="object" class="oe_highlight" attrs="{'invisible':[('state','!=','cre')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group string="Datos de cedulas">
+                        <field name="name" placeholder="Folio" />
+                        <field name="fecha_inicio" placeholder="Fecha de inicio"/>
+                        <field name="fecha_fin" placeholder="Fecha de termino"/>
+                        <field name="play_id" placeholder="juego"/>
+                        <field name="resultado" placeholder="Resultado"/>
+                    </group>
+					<field name="player_ids" nolabel="1">
+						<tree editable="bottom">
+							<field name="player_id"/>
+						</tree>
+					</field>
+                </sheet>
+            </form>
+            </field>
+		</record>
+
+        <!-- vista tipo tree del modelo helloworld.cedulas -->	
+		<record model="ir.ui.view" id="helloworld_cedulas_tree">
+			<field name="name">helloworld.cedulas.tree</field>
+			<field name="model">helloworld.cedulas</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="cedulas">
+                        <field name="name" />
+                        <field name="fecha_inicio" />
+                        <field name="fecha_fin" />
+                        <field name="play_id"/>
+                        <field name="resultado"/>
+                        <field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="helloworld_cedulas_search">
+			<field name="name">helloworld.alumno.search</field>
+			<field name="model">helloworld.cedulas</field>
+			<field name="arch" type="xml">
+				<search>
+                        <field name="name" />
+                        <field name="fecha_inicio" />
+                        <field name="fecha_fin" />
+                        <field name="play_id"/>
+                        <field name="resultado"/>
+                        <field name="state"/>
+				</search>
+			</field>
+		</record>
+
+
+
+		<!-- ACCION PARA EL MODELO helloworld.cedulas -->	
+		<record id="helloworld_cedulas_action" model="ir.actions.act_window">
+			<field name="name">Cedulas</field>
+			<field name="res_model">helloworld.cedulas</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+</odoo>

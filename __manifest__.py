@@ -15,6 +15,7 @@
         'views/estadios_view.xml',
         'views/arbitros_view.xml',
         'views/plays_view.xml',
+        'views/cedulas_view.xml',
         'views/menu_view.xml',    
     ],
     'installable': True,

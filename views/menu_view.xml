@@ -10,6 +10,7 @@
 			<menuitem name="Procesos" id="helloworld_procesos_menu" sequence="10" parent="helloworld_menu" />
 				<menuitem name="Jugadores" action="helloworld_players_action"  id="helloworld_players_menu" sequence="50" parent="helloworld_procesos_menu" />
 				<menuitem name="Plays" action="helloworld_plays_action"  id="helloworld_plays_menu" sequence="10" parent="helloworld_procesos_menu" />
+				<menuitem name="Cedulas" action="helloworld_cedulas_action"  id="helloworld_cedulas_menu" sequence="20" parent="helloworld_procesos_menu" />
 
 	</data>
 </odoo>
