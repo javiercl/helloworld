@@ -17,6 +17,7 @@
                         <field name="fecha_inicio" placeholder="Fecha de inicio"/>
                         <field name="fecha_fin" placeholder="Fecha de termino"/>
                         <field name="play_id" placeholder="juego"/>
+                        <field name="play_desc" />
                         <field name="resultado" placeholder="Resultado"/>
                     </group>
 					<field name="player_ids" nolabel="1">

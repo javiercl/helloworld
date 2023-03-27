@@ -9,6 +9,7 @@
     'website': 'http://www.itsa.edu.mx',
     'depends': ['base'],
     'data': [
+        'reports/plays_report_template.xml',
         'views/teams_view.xml',
         'views/players_view.xml',
         'views/ligas_view.xml',

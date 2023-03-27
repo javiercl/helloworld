@@ -7,6 +7,6 @@ from . import estadios
 from . import arbitros
 from . import plays
 from . import cedulas
-
+from .reports import plays_report_template
 
 

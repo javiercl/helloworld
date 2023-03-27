@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <template id="plays_report_template" name="Listado de Juegod">
+        <t t-call="web.html_container">
+            <div class="header">
+                <h1>Reporte de Plays</h1>
+            </div>
+            <div class="page">
+                <table width="100%" style="border: 1px solid black; border-collapse: collapse;">
+                    <t t-foreach="docs" t-as="p">
+                        <tr>
+                            <td width="20%">
+                                <t t-esc="p.name"/>
+                            </td>
+                            <td width="20%">
+                                <t t-esc="p.team1_id.name"/>
+                            </td>
+                            <td width="20%">
+                                <t t-esc="p.team2_id.name"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+        </template>
+
+		<record id="reporte_plays_format" model="report.paperformat">
+			<field name="name">htld.carriers.plays.format</field>
+			<field name="default" eval="True"/>
+			<field name="format">custom</field>
+			<field name="page_height">279</field>
+			<field name="page_width">215</field>
+			<field name="orientation">Portrait</field>
+			<field name="margin_top">35</field>
+			<field name="margin_bottom">15</field>
+			<field name="margin_left">0</field>
+			<field name="margin_right">0</field>
+			<field name="header_line" eval="False"/>
+			<field name="header_spacing">35</field>
+			<field name="dpi">80</field>
+		</record>
+
+        <report
+            id="plays_report"
+            model="helloworld.plays"
+            string="Listado de Juegos"
+            report_type="qweb-pdf"
+            name="helloworld.plays_report_template"
+            file="helloworld.plays_report"
+            attachment_use="False"
+        />
+
+        <record id="plays_report" model="ir.actions.report">
+            <field name="paperformat_id" ref="helloworld.reporte_plays_format" />
+        </record>
+    </data>
+</odoo> 

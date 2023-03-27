@@ -7,6 +7,7 @@ class cedulas(models.Model):
 
     name = fields.Char(string='Folio', readonly=True)
     play_id = fields.Many2one('helloworld.plays',string='Juego', required="True")
+    play_desc = fields.Char(compute='cal_desc_play',string='Desc. Juego', readonly=True)
     resultado = fields.Char(string='Resultado', required="True") # 1-1, 0-0, 3-2, etc
     fecha_inicio = fields.Datetime(string='Fecha de inicio', required="True")
     fecha_fin = fields.Datetime(string='Fecha de finalización', required="True")
@@ -17,6 +18,11 @@ class cedulas(models.Model):
 
     def registrar(self):
         raise UserError('Cambiar status')
+
+    @api.depends('play_id')
+    def cal_desc_play(self):
+        for rec in self:
+            rec.play_desc = rec.play_id.team1_id.name + ' vs ' + rec.play_id.team2_id.name
 
 
 class cedula_det(models.Model):
