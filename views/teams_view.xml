@@ -9,12 +9,13 @@
             <form>
                 <sheet>
                     <group string="Datos de teams">
+                        <field name="liga_id"/>
                         <field name="name" placeholder="Nombre del equipo" />
                         <field name="coach_id" placeholder="Coach"/>
                         <field name="photo" placeholder="Foto" widget="image" options="{'size': [150, 150]}"/>
                     </group>
 					<field name="player_ids" nolabel="1" readonly="True">
-						<tree>
+						<tree editable="bottom">
 							<field name="photo" widget="image"/>
 							<field name="name"/>
 							<field name="numero"/>
