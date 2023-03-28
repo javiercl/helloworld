@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ligas_id" model="ir.module.category">
+            <field name="name">Ligas Management</field>
+        </record>
+        <record id="ligas_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="ligas_id"/>
+        </record>
+        <record id="ligas_arbitros" model="res.groups">
+            <field name="name">Arbitros</field>
+            <field name="category_id" ref="ligas_id"/>
+        </record>
+
+        <record model="ir.rule" id="helloworld_cedulas_rule">
+            <field name="name">Solo Cedulas propias</field>
+            <field name="model_id" ref="helloworld.model_helloworld_cedulas"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('helloworld.ligas_arbitros'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        
+    </data>
+</odoo>

@@ -6,6 +6,10 @@
         <t t-call="web.html_container">
             <div class="header">
                 <h1>Reporte de Plays</h1>
+
+                <img src="/htld_carriers/static/img/encabezado.png" style="width:230mm;height:35mm;"/>
+
+                <img t-att-src="'data:image/png;base64,%s' % obtener_bgimage()" style="max-heigh:50px"/>
             </div>
             <div class="page">
                 <table width="100%" style="border: 1px solid black; border-collapse: collapse;">

@@ -22,7 +22,10 @@ class cedulas(models.Model):
     @api.depends('play_id')
     def cal_desc_play(self):
         for rec in self:
-            rec.play_desc = rec.play_id.team1_id.name + ' vs ' + rec.play_id.team2_id.name
+            if rec.play_id.team1_id.name and rec.play_id.team2_id.name:
+                rec.play_desc = rec.play_id.team1_id.name + ' vs ' + rec.play_id.team2_id.name
+            else:
+                rec.play_desc = 'No definido'
 
 
 class cedula_det(models.Model):
