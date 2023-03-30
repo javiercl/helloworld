@@ -38,6 +38,10 @@
                         <field name="liga_id"/>
                         <field name="name" />
                         <field name="coach_id"/>
+                        <field name="playsp" />
+                        <field name="playsw" />
+                        <field name="playsl" />
+                        <field name="playse" />
                         <field name="photo" widget="image" options="{'size': [50, 50]}"/>
 				</tree>
 			</field>

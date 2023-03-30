@@ -17,4 +17,8 @@ class teams(models.Model):
     photo = fields.Binary(string='Foto')
     player_ids = fields.One2many('helloworld.players','team_id',string='Team')
     player2_ids = fields.Many2many('helloworld.players',string='Jugadores')
+    playsp = fields.Integer(string='Juegos jugados')
+    playsw = fields.Integer(string='Juegos ganados')
+    playsl = fields.Integer(string='Juegos perdidos')
+    playse = fields.Integer(string='Juegos empatados')
     _order = 'name'

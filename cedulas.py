@@ -17,7 +17,35 @@ class cedulas(models.Model):
     _order = 'play_id'
 
     def registrar(self):
-        raise UserError('Cambiar status')
+        #team1 = self.env['helloworld.teams'].search([('id','=',self.play_id.team1_id.id)])
+        goles = self.resultado.split('-')
+        
+        vals={}
+        vals['playsp'] = self.play_id.team1_id.playsp + 1
+        if goles[0] > goles[1]:
+            vals['playsw'] = self.play_id.team1_id.playsw + 1
+        elif goles[0] < goles[1]:
+            vals['playsl'] = self.play_id.team1_id.playsl + 1
+        else:
+            vals['playse'] = self.play_id.team1_id.playse + 1
+        
+        self.play_id.team1_id.write(vals)
+
+        vals={}
+        vals['playsp'] = self.play_id.team2_id.playsp + 1
+        if goles[1] > goles[0]:
+            vals['playsw'] = self.play_id.team2_id.playsw + 1
+        elif goles[1] < goles[0]:
+            vals['playsl'] = self.play_id.team2_id.playsl + 1
+        else:
+            vals['playse'] = self.play_id.team2_id.playse + 1
+        
+        self.play_id.team2_id.write(vals)
+
+        vals={}
+        vals['state'] = 'env'
+        self.write(vals)
+
 
     @api.depends('play_id')
     def cal_desc_play(self):
